@@ -24,6 +24,7 @@ public:
 	void push(const AVFrame*);
 	void over();
 	void stop();
+	void wait();
 
 private:
 	class Cmp {

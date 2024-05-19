@@ -146,6 +146,15 @@ void SdlPlayer::_do_play()
 	SDL_DestroyWindow(window);
 }
 
+void SdlPlayer::wait()
+{
+	if (_th && _th->joinable())
+	{
+		_th->join();
+		_th = nullptr;
+	}
+}
+
 void SdlPlayer::over()
 {
 	_is_over = true;

@@ -170,6 +170,10 @@ int main()
     /* flush the decoder */
     ret = decode_packet(decoder_ctx, frame, NULL);
 
+    player.over();
+    std::cin.get();
+    player.stop();
+    player.wait();
     player.destory();
     
 	return 0;
