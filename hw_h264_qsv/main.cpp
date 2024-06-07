@@ -66,7 +66,7 @@ static int decode_packet(AVCodecContext* decoder_ctx,
             goto fail;
         }
         else {
-            sw_frame->pts = frame->pkt_dts;
+            sw_frame->pts = frame->pts;// frame->pkt_dts;
             player.push(sw_frame);
         }
 
