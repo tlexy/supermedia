@@ -12,6 +12,16 @@ extern "C" {
 #include <libavformat/avformat.h>
 }
 
+class Cmp {
+public:
+	bool operator()(const AVFrame* a, const AVFrame* b) {
+		if (a->pts < 0 || b->pts < 0) {
+			fprintf(stderr, "%lld, %lld", a->pts, b->pts);
+		}
+		return  b->pts < a->pts;
+	}
+};
+
 class SdlPlayer
 {
 public:
@@ -27,12 +37,6 @@ public:
 	void wait();
 
 private:
-	class Cmp {
-	public:
-		bool operator()(const AVFrame* a, const AVFrame* b) {
-			return a->pts >= b->pts;
-		}
-	};
 	void _do_play();
 	AVFrame* get_frame_from_queue();
 

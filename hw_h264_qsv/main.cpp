@@ -22,8 +22,8 @@ SdlPlayer player("h264_qsv_decode");
 static AVPixelFormat get_format(AVCodecContext* avctx, const enum AVPixelFormat* pix_fmts)
 {
     while (*pix_fmts != AV_PIX_FMT_NONE) {
-        if (*pix_fmts == AV_PIX_FMT_QSV) {
-            return AV_PIX_FMT_QSV;
+        if (*pix_fmts == AV_PIX_FMT_CUDA) {
+            return AV_PIX_FMT_CUDA;// AV_PIX_FMT_QSV;
         }
 
         pix_fmts++;
@@ -79,19 +79,56 @@ static int decode_packet(AVCodecContext* decoder_ctx,
     return 0;
 }
 
+struct MyData {
+    int x;
+};
+
+class CmpMyData {
+public:
+    bool operator()(const MyData& a, const MyData& b) {
+        return  b.x < a.x;
+    }
+};
+
+int main2() 
+{
+    std::priority_queue<MyData, std::vector<MyData>, CmpMyData> q1;
+    MyData x, y, z;
+    x.x = 1;
+    y.x = 2;
+    z.x = 3;
+    q1.push(x);
+    q1.push(y);
+    q1.push(z);
+
+    player.init();
+    for (int i = 0; i < 10; ++i) {
+        AVFrame* frame = av_frame_alloc();
+        frame->pts = i;
+        player.push(frame);
+    }
+
+    std::cin.get();
+    return 0;
+}
+
 //硬件解码测试qsv
 int main()
 {
     AVFormatContext* input_ctx = NULL;
     int video_index = -1;
 
-    const char* filename = "../big2.mp4";
+    char errbuf[128];
+    const char* filename = "../douna.mp4";
     int ret = avformat_open_input(&input_ctx, filename, NULL, NULL);
     if (ret < 0) {
         fprintf(stderr, "Cannot open input file '%s'\n", filename);
         exit(1);
     }
-
+    if (avformat_find_stream_info(input_ctx, NULL) < 0) {
+        fprintf(stderr, "Couldn't find stream information.\n");
+        return -1;
+    }
     //
     for (int i = 0; i < input_ctx->nb_streams; i++) {
         AVStream* st = input_ctx->streams[i];
@@ -106,7 +143,7 @@ int main()
 
     // open the hardware device
     AVBufferRef* device_ref = NULL;
-    ret = av_hwdevice_ctx_create(&device_ref, AV_HWDEVICE_TYPE_QSV,
+    ret = av_hwdevice_ctx_create(&device_ref, AV_HWDEVICE_TYPE_CUDA,//AV_HWDEVICE_TYPE_CUDA;AV_HWDEVICE_TYPE_QSV
         "auto", NULL, 0);
     if (ret < 0) {
         fprintf(stderr, "Cannot open the hardware device\n");
@@ -114,7 +151,7 @@ int main()
     }
 
     /* initialize the decoder */
-    const AVCodec* decoder = avcodec_find_decoder_by_name("h264_qsv");
+    const AVCodec* decoder = avcodec_find_decoder_by_name("h264_cuvid");//h264_qsv
     if (!decoder) {
         fprintf(stderr, "The QSV decoder is not present in libavcodec\n");
         exit(1);
@@ -125,6 +162,7 @@ int main()
         ret = AVERROR(ENOMEM);
         exit(1);
     }
+    ret = avcodec_parameters_to_context(decoder_ctx, input_ctx->streams[video_index]->codecpar);
     //
     decoder_ctx->codec_id = AV_CODEC_ID_H264;
     ///下面这是做什么？
@@ -145,9 +183,13 @@ int main()
     decoder_ctx->hw_device_ctx = av_buffer_ref(device_ref);
     decoder_ctx->get_format = get_format;
 
+    
+    //hw_decoder_init(decoder_ctx, 
     ret = avcodec_open2(decoder_ctx, NULL, NULL);
     if (ret < 0) {
-        fprintf(stderr, "Error opening the decoder: ");
+        memset(errbuf, 0x0, sizeof(errbuf));
+        av_strerror(ret, errbuf, sizeof(errbuf));
+        fprintf(stderr, "Error opening the decoder: %s", errbuf);
         exit(1);
     }
 
