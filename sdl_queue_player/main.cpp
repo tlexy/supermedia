@@ -130,7 +130,7 @@ int main()
 	init();
 	
 	AVFormatContext* pFormatCtx = NULL;
-	const char* filename = "../big2.mp4";//douna.mp4
+	const char* filename = "../test2.mp4";//douna.mp4
 	if (avformat_open_input(&pFormatCtx, filename, NULL, NULL) != 0) {
 		SDL_LogError(SDL_LOG_CATEGORY_APPLICATION, "Failed to open video file!");
 		exit(1);
@@ -146,7 +146,8 @@ int main()
 
 	int videoStream = -1;
 	for (int i = 0; i < pFormatCtx->nb_streams; i++) {
-		if (pFormatCtx->streams[i]->codecpar->codec_type == AVMEDIA_TYPE_VIDEO) {
+		AVStream* stream = pFormatCtx->streams[i];
+		if (stream->codecpar->codec_type == AVMEDIA_TYPE_VIDEO) {
 			videoStream = i;
 			break;
 		}
@@ -200,6 +201,7 @@ int main()
 		if (ret < 0) {
 			break;
 		}
+		//avformat_find_stream_info
 		if (packet.stream_index == videoStream) {
 			ret = avcodec_send_packet(pCodecCtxOrig, &packet);
 			if (ret < 0) {
