@@ -33,6 +33,10 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "common", "common", "{8370C1
 EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "common", "common\common.vcxproj", "{A05ED204-AEA2-4147-A7DB-2DE6C5C759CE}"
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "slice", "slice", "{F1F508FA-CBC3-4CE8-A038-4E48FCA1FD4D}"
+EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "just_decode", "just_decode\just_decode.vcxproj", "{151ACB68-395F-44AF-97B3-399347072235}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|x64 = Debug|x64
@@ -137,6 +141,14 @@ Global
 		{A05ED204-AEA2-4147-A7DB-2DE6C5C759CE}.Release|x64.Build.0 = Release|x64
 		{A05ED204-AEA2-4147-A7DB-2DE6C5C759CE}.Release|x86.ActiveCfg = Release|Win32
 		{A05ED204-AEA2-4147-A7DB-2DE6C5C759CE}.Release|x86.Build.0 = Release|Win32
+		{151ACB68-395F-44AF-97B3-399347072235}.Debug|x64.ActiveCfg = Debug|x64
+		{151ACB68-395F-44AF-97B3-399347072235}.Debug|x64.Build.0 = Debug|x64
+		{151ACB68-395F-44AF-97B3-399347072235}.Debug|x86.ActiveCfg = Debug|Win32
+		{151ACB68-395F-44AF-97B3-399347072235}.Debug|x86.Build.0 = Debug|Win32
+		{151ACB68-395F-44AF-97B3-399347072235}.Release|x64.ActiveCfg = Release|x64
+		{151ACB68-395F-44AF-97B3-399347072235}.Release|x64.Build.0 = Release|x64
+		{151ACB68-395F-44AF-97B3-399347072235}.Release|x86.ActiveCfg = Release|Win32
+		{151ACB68-395F-44AF-97B3-399347072235}.Release|x86.Build.0 = Release|Win32
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -152,6 +164,7 @@ Global
 		{B2CCEC77-0999-4D8F-8C28-57759000B886} = {E423E8BA-F4EF-4F9D-B893-87C0DF9A93BF}
 		{B0062EC7-4730-4A08-BC84-45859B7CC6A6} = {E423E8BA-F4EF-4F9D-B893-87C0DF9A93BF}
 		{A05ED204-AEA2-4147-A7DB-2DE6C5C759CE} = {8370C1A9-D2CD-48E4-9941-F99952D32901}
+		{151ACB68-395F-44AF-97B3-399347072235} = {F1F508FA-CBC3-4CE8-A038-4E48FCA1FD4D}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {7AE561F9-B6BC-42A4-9A58-D577B757C30B}
