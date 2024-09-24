@@ -92,11 +92,52 @@ bool H264Muxer::open(const std::string& filename)
 	if (ret < 0) {
 		return false;
 	}
+
+	//初始化帧
+	_pic_frame = av_frame_alloc();
+	_pic_frame->width = _codec_ctx->width;
+	_pic_frame->height = _codec_ctx->height;
+	_pic_frame->format = _codec_ctx->pix_fmt;
+	size_t size = (size_t)av_image_get_buffer_size(_codec_ctx->pix_fmt, _codec_ctx->width, _codec_ctx->height, 1);
+	av_new_packet(_pkt, (int)(size * 3));
+	uint8_t* picture_buf = (uint8_t*)av_malloc(size);
+	av_image_fill_arrays(_pic_frame->data, _pic_frame->linesize,
+		picture_buf, _codec_ctx->pix_fmt,
+		_codec_ctx->width, _codec_ctx->height, 1);
+
 	return true;
 }
 
 int H264Muxer::encode(const char* y, const char* u, const char* v, int yLen, int uLen, int vLen)
 {
+	_pic_frame->data[0] = (uint8_t*)y;                  //亮度Y
+	_pic_frame->data[1] = (uint8_t*)u;         // U
+	_pic_frame->data[2] = (uint8_t*)v; // V
+	// AVFrame PTS
+	_pic_frame->pts = _pts_counter++;
+
+	int ret = 0;
+	//编码
+	if (avcodec_send_frame(_codec_ctx, _pic_frame) >= 0) {
+		while (avcodec_receive_packet(_codec_ctx, _pkt) >= 0) {
+			//printf("encoder %d success!\n", _pts_counter);
+			std::cout << "_pts_counter: " << _pts_counter << std::endl;
+
+			// parpare packet for muxing
+			_pkt->stream_index = _video_stream->index;
+			av_packet_rescale_ts(_pkt, _codec_ctx->time_base, _video_stream->time_base);
+			_pkt->pos = -1;
+			ret = av_interleaved_write_frame(_fmt_ctx, _pkt);
+			if (ret < 0) {
+				memset(_errstr, 0x0, sizeof(_errstr));
+				av_strerror(ret, _errstr, sizeof(_errstr));
+				printf("error is: %s.\n", _errstr);
+			}
+
+			av_packet_unref(_pkt);//刷新缓存
+		}
+	}
+
 	return 0;
 }
 

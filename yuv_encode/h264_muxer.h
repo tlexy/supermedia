@@ -1,6 +1,7 @@
 ﻿#pragma once
 
 #include <string>
+#include <stdint.h>
 
 extern "C" {
 #include <libavcodec/avcodec.h>
@@ -40,5 +41,9 @@ private:
 	const AVOutputFormat* _out_fmt;
 	AVStream* _video_stream;
 	const AVCodec* _video_codec;
+	AVFrame* _pic_frame;
+	AVPacket* _pkt;
+	int64_t _pts_counter{1123};
+	char _errstr[64];
 };
 
