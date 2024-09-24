@@ -35,6 +35,10 @@ Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "common", "common\common.vcx
 EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "opencv_test", "opencv_test\opencv_test.vcxproj", "{ACDFC431-4847-4E5B-B9E9-79635C2E4358}"
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "encode", "encode", "{EC17B1A1-4065-46AA-8E1B-6F83BCD465A1}"
+EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "yuv_encode", "yuv_encode\yuv_encode.vcxproj", "{96305EF6-005F-4119-8895-3685E0A9EF42}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|x64 = Debug|x64
@@ -147,6 +151,14 @@ Global
 		{ACDFC431-4847-4E5B-B9E9-79635C2E4358}.Release|x64.Build.0 = Release|x64
 		{ACDFC431-4847-4E5B-B9E9-79635C2E4358}.Release|x86.ActiveCfg = Release|Win32
 		{ACDFC431-4847-4E5B-B9E9-79635C2E4358}.Release|x86.Build.0 = Release|Win32
+		{96305EF6-005F-4119-8895-3685E0A9EF42}.Debug|x64.ActiveCfg = Debug|x64
+		{96305EF6-005F-4119-8895-3685E0A9EF42}.Debug|x64.Build.0 = Debug|x64
+		{96305EF6-005F-4119-8895-3685E0A9EF42}.Debug|x86.ActiveCfg = Debug|Win32
+		{96305EF6-005F-4119-8895-3685E0A9EF42}.Debug|x86.Build.0 = Debug|Win32
+		{96305EF6-005F-4119-8895-3685E0A9EF42}.Release|x64.ActiveCfg = Release|x64
+		{96305EF6-005F-4119-8895-3685E0A9EF42}.Release|x64.Build.0 = Release|x64
+		{96305EF6-005F-4119-8895-3685E0A9EF42}.Release|x86.ActiveCfg = Release|Win32
+		{96305EF6-005F-4119-8895-3685E0A9EF42}.Release|x86.Build.0 = Release|Win32
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -163,6 +175,7 @@ Global
 		{B0062EC7-4730-4A08-BC84-45859B7CC6A6} = {E423E8BA-F4EF-4F9D-B893-87C0DF9A93BF}
 		{A05ED204-AEA2-4147-A7DB-2DE6C5C759CE} = {8370C1A9-D2CD-48E4-9941-F99952D32901}
 		{ACDFC431-4847-4E5B-B9E9-79635C2E4358} = {8370C1A9-D2CD-48E4-9941-F99952D32901}
+		{96305EF6-005F-4119-8895-3685E0A9EF42} = {EC17B1A1-4065-46AA-8E1B-6F83BCD465A1}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {7AE561F9-B6BC-42A4-9A58-D577B757C30B}
