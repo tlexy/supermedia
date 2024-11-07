@@ -43,6 +43,10 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "encode", "encode", "{EC17B1
 EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "yuv_encode", "yuv_encode\yuv_encode.vcxproj", "{96305EF6-005F-4119-8895-3685E0A9EF42}"
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "decoder", "decoder", "{F5BE100A-3286-4370-859D-7DC002F78283}"
+EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "simple_decoder", "simple_decoder\simple_decoder.vcxproj", "{B6A85793-21C0-4507-AA3D-1E1910AD3A96}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|x64 = Debug|x64
@@ -171,6 +175,14 @@ Global
 		{96305EF6-005F-4119-8895-3685E0A9EF42}.Release|x64.Build.0 = Release|x64
 		{96305EF6-005F-4119-8895-3685E0A9EF42}.Release|x86.ActiveCfg = Release|Win32
 		{96305EF6-005F-4119-8895-3685E0A9EF42}.Release|x86.Build.0 = Release|Win32
+		{B6A85793-21C0-4507-AA3D-1E1910AD3A96}.Debug|x64.ActiveCfg = Debug|x64
+		{B6A85793-21C0-4507-AA3D-1E1910AD3A96}.Debug|x64.Build.0 = Debug|x64
+		{B6A85793-21C0-4507-AA3D-1E1910AD3A96}.Debug|x86.ActiveCfg = Debug|Win32
+		{B6A85793-21C0-4507-AA3D-1E1910AD3A96}.Debug|x86.Build.0 = Debug|Win32
+		{B6A85793-21C0-4507-AA3D-1E1910AD3A96}.Release|x64.ActiveCfg = Release|x64
+		{B6A85793-21C0-4507-AA3D-1E1910AD3A96}.Release|x64.Build.0 = Release|x64
+		{B6A85793-21C0-4507-AA3D-1E1910AD3A96}.Release|x86.ActiveCfg = Release|Win32
+		{B6A85793-21C0-4507-AA3D-1E1910AD3A96}.Release|x86.Build.0 = Release|Win32
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -189,6 +201,7 @@ Global
 		{151ACB68-395F-44AF-97B3-399347072235} = {F1F508FA-CBC3-4CE8-A038-4E48FCA1FD4D}
 		{ACDFC431-4847-4E5B-B9E9-79635C2E4358} = {8370C1A9-D2CD-48E4-9941-F99952D32901}
 		{96305EF6-005F-4119-8895-3685E0A9EF42} = {EC17B1A1-4065-46AA-8E1B-6F83BCD465A1}
+		{B6A85793-21C0-4507-AA3D-1E1910AD3A96} = {F5BE100A-3286-4370-859D-7DC002F78283}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {7AE561F9-B6BC-42A4-9A58-D577B757C30B}
