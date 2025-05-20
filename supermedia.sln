@@ -1,7 +1,7 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio Version 17
-VisualStudioVersion = 17.0.31912.275
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.32126.315
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "supermedia", "supermedia.vcxproj", "{4C301D9A-127F-41A1-A99C-0C90B8AA6C40}"
 EndProject
@@ -46,6 +46,8 @@ EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "decoder", "decoder", "{F5BE100A-3286-4370-859D-7DC002F78283}"
 EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "simple_decoder", "simple_decoder\simple_decoder.vcxproj", "{B6A85793-21C0-4507-AA3D-1E1910AD3A96}"
+EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "hw_h264_dxva2", "hw_h264_dxva2\hw_h264_dxva2.vcxproj", "{F6C16E64-A73A-43D7-844C-A8B4301CCD8F}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -183,6 +185,14 @@ Global
 		{B6A85793-21C0-4507-AA3D-1E1910AD3A96}.Release|x64.Build.0 = Release|x64
 		{B6A85793-21C0-4507-AA3D-1E1910AD3A96}.Release|x86.ActiveCfg = Release|Win32
 		{B6A85793-21C0-4507-AA3D-1E1910AD3A96}.Release|x86.Build.0 = Release|Win32
+		{F6C16E64-A73A-43D7-844C-A8B4301CCD8F}.Debug|x64.ActiveCfg = Debug|x64
+		{F6C16E64-A73A-43D7-844C-A8B4301CCD8F}.Debug|x64.Build.0 = Debug|x64
+		{F6C16E64-A73A-43D7-844C-A8B4301CCD8F}.Debug|x86.ActiveCfg = Debug|Win32
+		{F6C16E64-A73A-43D7-844C-A8B4301CCD8F}.Debug|x86.Build.0 = Debug|Win32
+		{F6C16E64-A73A-43D7-844C-A8B4301CCD8F}.Release|x64.ActiveCfg = Release|x64
+		{F6C16E64-A73A-43D7-844C-A8B4301CCD8F}.Release|x64.Build.0 = Release|x64
+		{F6C16E64-A73A-43D7-844C-A8B4301CCD8F}.Release|x86.ActiveCfg = Release|Win32
+		{F6C16E64-A73A-43D7-844C-A8B4301CCD8F}.Release|x86.Build.0 = Release|Win32
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -202,6 +212,7 @@ Global
 		{ACDFC431-4847-4E5B-B9E9-79635C2E4358} = {8370C1A9-D2CD-48E4-9941-F99952D32901}
 		{96305EF6-005F-4119-8895-3685E0A9EF42} = {EC17B1A1-4065-46AA-8E1B-6F83BCD465A1}
 		{B6A85793-21C0-4507-AA3D-1E1910AD3A96} = {F5BE100A-3286-4370-859D-7DC002F78283}
+		{F6C16E64-A73A-43D7-844C-A8B4301CCD8F} = {E423E8BA-F4EF-4F9D-B893-87C0DF9A93BF}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {7AE561F9-B6BC-42A4-9A58-D577B757C30B}
